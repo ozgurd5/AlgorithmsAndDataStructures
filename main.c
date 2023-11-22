@@ -1,23 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//The reason we have **headPointer as the parameter in some function:
+//The reason we have **headPointer as the parameter in some functions is to modify the head itself, not the node that head points:
 
-//If we want to change the first node (remove, insert before etc.), we need to change the first node, not the head pointer itself, which is our..
-// ..only access point to the list. Head pointer must point another node and it must continue to exist.
-
-//With *head in the parameter, we can not change which node is the head is pointing. We can read the address inside the given pointer, reach..
-//..that address and modify the values of it. So with *head in the parameter we can read address of a node, go to that node and modify that node.
+//With *head in the parameter, we can not change which node is the head is pointing. We can read address of a node, go to that node and..
+//..modify that node.
 
 //With **head in the parameter, we can change which node is the head is pointing. We can read the address of an address, go to that address and..
-//..change that address.
+//..modify it (not the node, the address). So with **head in the parameter we can tell the head to point another node.
 
 //Tips with while loops:
 
-//Using "while (currentNode->next != NULL) currentNode = currentNode->next;" makes us go through every node except the last one and currentNode..
-//..gives us the last node after the loop
+//Using "while (currentNode->next != NULL) currentNode = currentNode->next;" makes us go through every node except the last one and after the loop..
+//..currentNode is the last node
 
-//Using "while (currentNode != NULL) currentNode = currentNode->next;" makes us go through every node and currentNode gives us NULL after the loop
+//Using "while (currentNode != NULL) currentNode = currentNode->next;" makes us go through every node and after the loop currentNode is NULL
 
 typedef struct node node;
 struct node
@@ -91,10 +88,10 @@ void AddToStart(node** headPointer, int id, int value)
     //Create new node to add to the start
     node* newNode = CreateNode(id, value);
 
-    //Link new node
+    //Link new node to the first node
     newNode->next = *headPointer;
 
-    //Make the new node head
+    //Make the new node head/first node
     *headPointer = newNode;
 }
 
@@ -113,16 +110,13 @@ void InsertAfterByID(node* head, int newNodeID, int newNodeValue, int insertTarg
     newNode->next = nextNodeAfterTarget;
 }
 
-void InsertBeforeByID(node* head, int newNodeID, int newNodeValue, int insertTargetID)
+void InsertBeforeByID(node** headPointer, int newNodeID, int newNodeValue, int insertTargetID)
 {
-    //Create new node to insert
-    node* newNode = CreateNode(newNodeID, newNodeValue);
-
     //TODO: new function
     //Starting nodes to go. We can't use the FindByID() function in here because we need to store both current and previous nodes when we go..
     //..through the list. We need previous node because we will link it to our new node.
-    node* currentNode = head;
-    node* currentPreviousNode;
+    node* currentNode = *headPointer;
+    node* currentPreviousNode = NULL;
 
     //Error flag
     int isIDMatched = 0;
@@ -147,6 +141,18 @@ void InsertBeforeByID(node* head, int newNodeID, int newNodeValue, int insertTar
         printf("Error: Node with given id does not exist");
         return;
     }
+
+    //If inserting before first node, just use AddToStart()
+    if (currentPreviousNode == NULL)
+    {
+        AddToStart(headPointer, newNodeID, newNodeValue);
+        return;
+    }
+
+    //If not inserting before headPointer:
+
+    //Create new node to insert
+    node* newNode = CreateNode(newNodeID, newNodeValue);
 
     //Link the node to the list
     //Current previous node must point new node and new node must point current node
@@ -218,9 +224,11 @@ void RemoveFromListByID(node** headPointer, int id)
         return;
     }
 
+    //If removing first node
     //To unlink the first node, we need to change what head is pointing. It must point the next node of course.
     if (currentPreviousNode == NULL) *headPointer = currentNode->next;
 
+    //If not removing first node
     //Unlinking
     else currentPreviousNode->next = currentNode->next;
 
@@ -278,7 +286,12 @@ int main()
 
     //Add new node with id 202 and value 2 before the node with id 707
     printf("\nList with a new node with id 202 and value 2 before the node with id 707:\n");
-    InsertBeforeByID(head, 202, 2, 707);
+    InsertBeforeByID(&head, 202, 2, 707);
+    PrintList(head);
+
+    //Add new node with id 303 and value 3 before the node with id 909, which is the head
+    printf("\nList with a new node with id 303 and value 3 before the node with id 909, which is the head:\n");
+    InsertBeforeByID(&head, 303, 3, 909);
     PrintList(head);
 
     return 0;
