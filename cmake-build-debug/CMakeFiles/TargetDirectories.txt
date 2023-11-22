@@ -1,0 +1,3 @@
+C:/Projects/AlgorithmsAndDataStructures/cmake-build-debug/CMakeFiles/AlgorithmsAndDataStructures.dir
+C:/Projects/AlgorithmsAndDataStructures/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Projects/AlgorithmsAndDataStructures/cmake-build-debug/CMakeFiles/rebuild_cache.dir
