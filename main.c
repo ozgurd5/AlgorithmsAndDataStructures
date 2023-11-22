@@ -49,7 +49,7 @@ void PrintList(node* head)
     //Go through all the nodes in the list and print
     while (currentNode != NULL)
     {
-        printf("%d: %d\n", currentNode->id, currentNode->value);
+        printf("id: %d - value: %d\n", currentNode->id, currentNode->value);
         currentNode = currentNode->next;
     }
 }
@@ -233,11 +233,11 @@ int main()
     //Create a list
     node* head = CreateNode(404, 4);
 
-    //Add new nodes with the ids of 505, 606, 707, 808, values of 8, 12, 16, 20 to the end
-    AddToLast(head, 505, 8);
-    AddToLast(head, 606, 12);
-    AddToLast(head, 707, 16);
-    AddToLast(head, 808, 20);
+    //Add new nodes with the ids of 505, 606, 707, 808, values of 5, 6, 7, 8 to the end
+    AddToLast(head, 505, 5);
+    AddToLast(head, 606, 6);
+    AddToLast(head, 707, 7);
+    AddToLast(head, 808, 8);
 
     //Print the list
     printf("List:\n");
@@ -267,8 +267,18 @@ int main()
     PrintList(head);
 
     //Add new node with id 909 and value 24 in the beginning
-    printf("\nList with a new node with id 909 and value 24 in the beginning:\n");
-    AddToStart(&head, 909, 34);
+    printf("\nList with a new node with id 909 and value 9 in the beginning:\n");
+    AddToStart(&head, 909, 9);
+    PrintList(head);
+
+    //Add new node with id 101 and value 1 after the node with id 707
+    printf("\nList with a new node with id 101 and value 1 after the node with id 707:\n");
+    InsertAfterByID(head, 101, 1, 707);
+    PrintList(head);
+
+    //Add new node with id 202 and value 2 before the node with id 707
+    printf("\nList with a new node with id 202 and value 2 before the node with id 707:\n");
+    InsertBeforeByID(head, 202, 2, 707);
     PrintList(head);
 
     return 0;
