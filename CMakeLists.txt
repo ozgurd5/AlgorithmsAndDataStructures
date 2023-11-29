@@ -3,4 +3,10 @@ project(AlgorithmsAndDataStructures C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(AlgorithmsAndDataStructures main.c)
+add_executable(AlgorithmsAndDataStructures LinkedList.c
+        LinkedList.h
+        Stack.c
+        Stack.h
+        main.c
+        Queue.c
+        Queue.h)

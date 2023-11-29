@@ -1,5 +1,14 @@
 # ninja log v5
-2	63	7224020624392279	CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj	153a4aa43e57c1bb
-63	127	7224020624996752	AlgorithmsAndDataStructures.exe	14272bed88d96f3f
 1	62	7224021832184827	CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj	153a4aa43e57c1bb
 63	126	7224021832790799	AlgorithmsAndDataStructures.exe	14272bed88d96f3f
+11	81	7229881990007766	CMakeFiles/AlgorithmsAndDataStructures.dir/Queue.c.obj	db2800f0a0fa0e81
+4	82	7229881990007766	CMakeFiles/AlgorithmsAndDataStructures.dir/Stack.c.obj	7381f6de2287883b
+0	86	7229881990062672	CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList.c.obj	d478fda8d826a841
+2	62	7229882231527073	CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj	153a4aa43e57c1bb
+7	76	7229882231661699	CMakeFiles/AlgorithmsAndDataStructures.dir/Stack.c.obj	7381f6de2287883b
+10	79	7229882231681703	CMakeFiles/AlgorithmsAndDataStructures.dir/Queue.c.obj	db2800f0a0fa0e81
+79	269	7229882233561971	AlgorithmsAndDataStructures.exe	98a236ca53b2d7bc
+1	50	7229882341249438	CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj	153a4aa43e57c1bb
+51	124	7229882341952235	AlgorithmsAndDataStructures.exe	98a236ca53b2d7bc
+2	50	7229882392970862	CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj	153a4aa43e57c1bb
+51	125	7229882393696678	AlgorithmsAndDataStructures.exe	98a236ca53b2d7bc
