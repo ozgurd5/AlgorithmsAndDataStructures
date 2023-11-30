@@ -55,8 +55,8 @@ build CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList.c.obj: C_COMPILER__A
   OBJECT_DIR = CMakeFiles\AlgorithmsAndDataStructures.dir
   OBJECT_FILE_DIR = CMakeFiles\AlgorithmsAndDataStructures.dir
 
-build CMakeFiles/AlgorithmsAndDataStructures.dir/StackArray.c.obj: C_COMPILER__AlgorithmsAndDataStructures_unscanned_Debug C$:/Projects/AlgorithmsAndDataStructures/StackArray.c || cmake_object_order_depends_target_AlgorithmsAndDataStructures
-  DEP_FILE = CMakeFiles\AlgorithmsAndDataStructures.dir\StackArray.c.obj.d
+build CMakeFiles/AlgorithmsAndDataStructures.dir/StackIntArray.c.obj: C_COMPILER__AlgorithmsAndDataStructures_unscanned_Debug C$:/Projects/AlgorithmsAndDataStructures/StackIntArray.c || cmake_object_order_depends_target_AlgorithmsAndDataStructures
+  DEP_FILE = CMakeFiles\AlgorithmsAndDataStructures.dir\StackIntArray.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\AlgorithmsAndDataStructures.dir
   OBJECT_FILE_DIR = CMakeFiles\AlgorithmsAndDataStructures.dir
@@ -81,7 +81,7 @@ build CMakeFiles/AlgorithmsAndDataStructures.dir/Queue.c.obj: C_COMPILER__Algori
 #############################################
 # Link the executable AlgorithmsAndDataStructures.exe
 
-build AlgorithmsAndDataStructures.exe: C_EXECUTABLE_LINKER__AlgorithmsAndDataStructures_Debug CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/StackArray.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/Queue.c.obj
+build AlgorithmsAndDataStructures.exe: C_EXECUTABLE_LINKER__AlgorithmsAndDataStructures_Debug CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/StackIntArray.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/Queue.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\AlgorithmsAndDataStructures.dir

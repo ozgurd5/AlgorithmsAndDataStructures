@@ -124,12 +124,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "StackArray.c",
+			"path" : "StackIntArray.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "StackArray.h",
+			"path" : "StackIntArray.h",
 			"sourceGroupIndex" : 1
 		},
 		{
