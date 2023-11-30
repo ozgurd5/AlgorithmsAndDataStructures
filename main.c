@@ -1,15 +1,15 @@
 #include "LinkedList.h"
 #include "StackIntArray.h"
-#include "Queue.h"
+#include "QueueIntArray.h"
 
 int main()
 {
     //RunLinkedListTests();
 
     //RunTestsStackIntArrayInStackMemory();
-    //RunTestsIntArrayStackInHeapMemory();
+    //RunTestsStackIntArrayInHeapMemory();
 
-    //RunQueueTests();
+    RunTestsQueueIntArrayInStackMemory();
 
     return 0;
 }

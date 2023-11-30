@@ -8,5 +8,5 @@ add_executable(AlgorithmsAndDataStructures LinkedList.c
         StackIntArray.c
         StackIntArray.h
         main.c
-        Queue.c
-        Queue.h)
+        QueueIntArray.c
+        QueueIntArray.h)

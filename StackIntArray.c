@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "StackIntArray.h"
 
-void InitIntArrayStack(StackArrayInt* stack, int* array, size_t size)
+void InitStackIntArray(StackArrayInt* stack, int* array, size_t size)
 {
     //Link array
     stack->array = array;
@@ -12,7 +12,7 @@ void InitIntArrayStack(StackArrayInt* stack, int* array, size_t size)
     stack->top = -1;
 }
 
-StackArrayInt* CreateIntArrayStack(size_t size)
+StackArrayInt* CreateStackIntArray(size_t size)
 {
     //Create stack in heap memory
     StackArrayInt* createdStack = (StackArrayInt*) malloc(sizeof (StackArrayInt));
@@ -30,7 +30,7 @@ StackArrayInt* CreateIntArrayStack(size_t size)
     return createdStack;
 }
 
-void FreeIntArrayStack(StackArrayInt* stack)
+void FreeStackIntArray(StackArrayInt* stack)
 {
     free(stack->array);
     free(stack);
@@ -40,7 +40,7 @@ void PushIntArray(StackArrayInt* stack, int valueToPush)
 {
     if (stack->top == stack->size - 1) //If top in last index
     {
-        printf("Error: Capacity full\n");
+        printf("Error: Stack capacity full\n");
         return;
     }
 
@@ -72,67 +72,70 @@ int PeekStackIntArray(StackArrayInt* stack)
 
 void RunTestsStackIntArrayInStackMemory()
 {
-    //Creating integer array stack in stack memory
+    //Creating stack that holds integer and using array in stack memory
     int stackArray[3];
-    StackArrayInt exampleStackArrayInt;
-    InitIntArrayStack(&exampleStackArrayInt, stackArray, 3);
+    StackArrayInt exampleStackIntArray;
+    InitStackIntArray(&exampleStackIntArray, stackArray, 3);
 
-    printf("An integer stack using array with capacity of 3 created in stack memory\n");
+    printf("A stack that holds integer and using array with size of 3 created in stack memory\n");
 
-    PushIntArray(&exampleStackArrayInt, 5);
-    printf("Push 5 and peek: %d\n", PeekStackIntArray(&exampleStackArrayInt));
+    //TODO: empty check
 
-    PushIntArray(&exampleStackArrayInt, 10);
-    printf("Push 10 and peek: %d\n", PeekStackIntArray(&exampleStackArrayInt));
+    PushIntArray(&exampleStackIntArray, 5);
+    printf("Push 5 and peek: %d\n", PeekStackIntArray(&exampleStackIntArray));
 
-    printf("Pop: %d\n", PopIntArray(&exampleStackArrayInt));
+    PushIntArray(&exampleStackIntArray, 10);
+    printf("Push 10 and peek: %d\n", PeekStackIntArray(&exampleStackIntArray));
 
-    printf("Peek: %d\n", PeekStackIntArray(&exampleStackArrayInt));
+    printf("Pop: %d\n", PopIntArray(&exampleStackIntArray));
 
-    PushIntArray(&exampleStackArrayInt, 10);
-    printf("Push 10 again and peek: %d\n", PeekStackIntArray(&exampleStackArrayInt));
+    printf("Peek: %d\n", PeekStackIntArray(&exampleStackIntArray));
 
-    PushIntArray(&exampleStackArrayInt, 15);
-    printf("Push 15 and peek: %d\n", PeekStackIntArray(&exampleStackArrayInt));
+    PushIntArray(&exampleStackIntArray, 10);
+    printf("Push 10 again and peek: %d\n", PeekStackIntArray(&exampleStackIntArray));
+
+    PushIntArray(&exampleStackIntArray, 15);
+    printf("Push 15 and peek: %d\n", PeekStackIntArray(&exampleStackIntArray));
 
     printf("Try to push 20, it will give full capacity error\n");
-    PushIntArray(&exampleStackArrayInt, 20);
+    PushIntArray(&exampleStackIntArray, 20);
 
-    printf("Pop: %d\n", PopIntArray(&exampleStackArrayInt));
+    printf("Pop: %d\n", PopIntArray(&exampleStackIntArray));
 
-    PushIntArray(&exampleStackArrayInt, 20);
-    printf("Try to push 20 again and peek: %d\n", PeekStackIntArray(&exampleStackArrayInt));
+    PushIntArray(&exampleStackIntArray, 20);
+    printf("Try to push 20 again and peek: %d\n", PeekStackIntArray(&exampleStackIntArray));
 }
 
-void RunTestsIntArrayStackInHeapMemory()
+void RunTestsStackIntArrayInHeapMemory()
 {
-    //Creating integer stack array in heap memory
-    StackArrayInt* exampleStackArrayInt2 = CreateIntArrayStack(3);
-    printf("An integer stack using array with capacity of 3 created in heap memory\n");
+    //Creating stack that holds integer using array in heap memory
+    StackArrayInt* exampleStackIntArray = CreateStackIntArray(3);
+    printf("A stack that holds integer and using array with size 3 created in heap memory\n");
 
-    PushIntArray(exampleStackArrayInt2, 5);
-    printf("Push 5 and peek: %d\n", PeekStackIntArray(exampleStackArrayInt2));
+    PushIntArray(exampleStackIntArray, 5);
+    printf("Push 5 and peek: %d\n", PeekStackIntArray(exampleStackIntArray));
 
-    PushIntArray(exampleStackArrayInt2, 10);
-    printf("Push 10 and peek: %d\n", PeekStackIntArray(exampleStackArrayInt2));
+    PushIntArray(exampleStackIntArray, 10);
+    printf("Push 10 and peek: %d\n", PeekStackIntArray(exampleStackIntArray));
 
-    printf("Pop: %d\n", PopIntArray(exampleStackArrayInt2));
+    printf("Pop: %d\n", PopIntArray(exampleStackIntArray));
 
-    printf("Peek: %d\n", PeekStackIntArray(exampleStackArrayInt2));
+    printf("Peek: %d\n", PeekStackIntArray(exampleStackIntArray));
 
-    PushIntArray(exampleStackArrayInt2, 10);
-    printf("Push 10 again and peek: %d\n", PeekStackIntArray(exampleStackArrayInt2));
+    PushIntArray(exampleStackIntArray, 10);
+    printf("Push 10 again and peek: %d\n", PeekStackIntArray(exampleStackIntArray));
 
-    PushIntArray(exampleStackArrayInt2, 15);
-    printf("Push 15 and peek: %d\n", PeekStackIntArray(exampleStackArrayInt2));
+    PushIntArray(exampleStackIntArray, 15);
+    printf("Push 15 and peek: %d\n", PeekStackIntArray(exampleStackIntArray));
 
     printf("Try to push 20, it will give full capacity error\n");
-    PushIntArray(exampleStackArrayInt2, 20);
+    PushIntArray(exampleStackIntArray, 20);
 
-    printf("Pop: %d\n", PopIntArray(exampleStackArrayInt2));
+    printf("Pop: %d\n", PopIntArray(exampleStackIntArray));
 
-    PushIntArray(exampleStackArrayInt2, 20);
-    printf("Try to push 20 again and peek: %d\n", PeekStackIntArray(exampleStackArrayInt2));
+    PushIntArray(exampleStackIntArray, 20);
+    printf("Try to push 20 again and peek: %d\n", PeekStackIntArray(exampleStackIntArray));
 
-    FreeIntArrayStack(exampleStackArrayInt2);
+    FreeStackIntArray(exampleStackIntArray);
+    printf("Stack freed!");
 }
