@@ -5,8 +5,8 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(AlgorithmsAndDataStructures LinkedList.c
         LinkedList.h
-        Stack.c
-        Stack.h
+        StackArray.c
+        StackArray.h
         main.c
         Queue.c
         Queue.h)

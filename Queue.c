@@ -1,11 +1,11 @@
 #include<stdio.h>
 
-#define cap 5
+#define QUEUE_CAPACITY 10
 
 void Enqueue(int* queue, int* front, int* rear, int valueToEnqueue)
 {
     if (*front == -1) (*front)++; //if creating from scratch
-    if (*rear == cap) //if full
+    if (*rear == QUEUE_CAPACITY) //if full
     {
         printf("Capacity full\n");
         return;
@@ -42,7 +42,7 @@ int PeekQueue(int* queue, int* front, int* rear)
 
 int RunQueueTests()
 {
-    int queue[cap];
+    int queue[QUEUE_CAPACITY];
     int front = -1;
     int rear = -1;
 
