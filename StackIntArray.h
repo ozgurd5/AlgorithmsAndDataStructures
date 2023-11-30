@@ -24,7 +24,7 @@ StackArrayInt* CreateIntArrayStack(size_t size);
 
 ///Use this for destroying the stack in heap memory\n\n
 ///Frees array of the stack and the stack itself
-void DestroyIntArrayStack(StackArrayInt* stack);
+void FreeIntArrayStack(StackArrayInt* stack);
 
 void PushIntArray(StackArrayInt* stack, int valueToPush);
 int PopIntArray(StackArrayInt* stack);

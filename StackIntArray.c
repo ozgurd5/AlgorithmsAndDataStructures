@@ -30,7 +30,7 @@ StackArrayInt* CreateIntArrayStack(size_t size)
     return createdStack;
 }
 
-void DestroyIntArrayStack(StackArrayInt* stack)
+void FreeIntArrayStack(StackArrayInt* stack)
 {
     free(stack->array);
     free(stack);
@@ -133,4 +133,6 @@ void RunTestsIntArrayStackInHeapMemory()
 
     PushIntArray(exampleStackArrayInt2, 20);
     printf("Try to push 20 again and peek: %d\n", PeekStackIntArray(exampleStackArrayInt2));
+
+    FreeIntArrayStack(exampleStackArrayInt2);
 }
