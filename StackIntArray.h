@@ -3,8 +3,8 @@
 
 #include <stdio.h>
 
-typedef struct StackArrayInt StackArrayInt;
-struct StackArrayInt
+typedef struct StackIntArray StackIntArray;
+struct StackIntArray
 {
     int* array;
     size_t size;
@@ -16,18 +16,18 @@ void RunTestsStackIntArrayInHeapMemory();
 
 ///Use this for creating the stack in stack memory\n\n
 ///Makes the given integer stack ready to use by assigning default values and linking the given array to the stack.
-void InitStackIntArray(StackArrayInt* stack, int* array, size_t size);
+void InitStackIntArray(StackIntArray* stack, int* array, size_t size);
 
 ///Use this for creating the stack in heap memory\n\n
 ///Creates a stack and an integer array in the heap memory, links the array to the stack, assigns default values and returns the created stack.
-StackArrayInt* CreateStackIntArray(size_t size);
+StackIntArray* CreateStackIntArray(size_t size);
 
 ///Use this for destroying the stack in heap memory\n\n
 ///Frees array of the stack and the stack itself
-void FreeStackIntArray(StackArrayInt* stack);
+void FreeStackIntArray(StackIntArray* stack);
 
-void PushIntArray(StackArrayInt* stack, int valueToPush);
-int PopIntArray(StackArrayInt* stack);
-int PeekStackIntArray(StackArrayInt* stack);
+void PushIntArray(StackIntArray* stack, int valueToPush);
+int PopIntArray(StackIntArray* stack);
+int PeekStackIntArray(StackIntArray* stack);
 
 #endif //ALGORITHMSANDDATASTRUCTURES_STACKINTARRAY_H

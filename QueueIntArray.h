@@ -10,9 +10,8 @@ struct QueueIntArray
     int tail;
 };
 
-int RunTestsQueueIntArrayInStackMemory();
+void RunTestsQueueIntArrayInStackMemory();
 
-void PrintHeadAndTail(QueueIntArray* queue);
 void EnqueueIntArray(QueueIntArray* queue, int valueToEnqueue);
 int DequeueIntArray(QueueIntArray* queue);
 int PeekQueueIntArray(QueueIntArray* queue);

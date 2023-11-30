@@ -60,57 +60,79 @@ int PeekQueueIntArray(QueueIntArray* queue)
 
 //todo: flush
 
-void PrintHeadAndTail(QueueIntArray* queue)
+void PrintCurrentQueueIntArray(QueueIntArray* queue)
 {
-    printf("Head: %d, Tail: %d\n\n", queue->head, queue->tail);
+    printf("Head index: %d, Tail index: %d -> Array: ", queue->head, queue->tail);
+
+    for (int i = 0; i < queue->size; ++i)
+    {
+        //TODO use stack for parentheses :)
+
+        if (i == queue->head) printf("[");
+        if (i == queue->tail) printf("(");
+
+        printf("%d", queue->array[i]);
+
+        if (i == queue->tail) printf(")");
+        if (i == queue->head) printf("]");
+
+        if (i == queue->size -1) printf("\n\n");
+        else printf(", ");
+    }
 }
 
-int RunTestsQueueIntArrayInStackMemory()
+void RunTests(QueueIntArray* queue)
 {
-    //Creating queue that holds integer and using array in stack memory
+    printf("() means head, [] means tail. Values that doesn't make sense are garbage values\n\n");
+
+    PrintCurrentQueueIntArray(queue);
+
+    EnqueueIntArray(queue, 5);
+    printf("Enqueue 5 and peek: %d\n", PeekQueueIntArray(queue));
+    PrintCurrentQueueIntArray(queue);
+
+    EnqueueIntArray(queue, 10);
+    printf("Enqueue 10 and peek: %d\n", PeekQueueIntArray(queue));
+    PrintCurrentQueueIntArray(queue);
+
+    EnqueueIntArray(queue, 15);
+    printf("Enqueue 15 and peek: %d\n", PeekQueueIntArray(queue));
+    PrintCurrentQueueIntArray(queue);
+
+    EnqueueIntArray(queue, 20);
+    printf("Try to enqueue 20, it will give full queue error\n");
+    PrintCurrentQueueIntArray(queue);
+
+    printf("Dequeue: %d\n", DequeueIntArray(queue));
+    PrintCurrentQueueIntArray(queue);
+
+    printf("Peek: %d\n", PeekQueueIntArray(queue));
+    PrintCurrentQueueIntArray(queue);
+
+    printf("Dequeue: %d\n", DequeueIntArray(queue));
+    PrintCurrentQueueIntArray(queue);
+
+    printf("Peek: %d\n", PeekQueueIntArray(queue));
+    PrintCurrentQueueIntArray(queue);
+
+    printf("Dequeue: %d\n", DequeueIntArray(queue));
+    PrintCurrentQueueIntArray(queue);
+
+    printf("Try to dequeue, it will give empty queue error and return 0: %d\n", DequeueIntArray(queue));
+    PrintCurrentQueueIntArray(queue);
+
+    printf("Try to peek, it will give empty queue error and return 0: %d\n", PeekQueueIntArray(queue));
+    PrintCurrentQueueIntArray(queue);
+}
+
+void RunTestsQueueIntArrayInStackMemory()
+{
+    //Creating a queue that holds integer and using array in stack memory
     int queueArray[3];
     QueueIntArray exampleQueueIntArray;
     InitQueueIntArray(&exampleQueueIntArray, queueArray, 3);
 
     printf("A queue that holds integer and using array with size 3 created in stack memory\n");
-    PrintHeadAndTail(&exampleQueueIntArray);
 
-    EnqueueIntArray(&exampleQueueIntArray, 5);
-    printf("Enqueue 5 and peek: %d\n", PeekQueueIntArray(&exampleQueueIntArray));
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    EnqueueIntArray(&exampleQueueIntArray, 10);
-    printf("Enqueue 10 and peek: %d\n", PeekQueueIntArray(&exampleQueueIntArray));
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    EnqueueIntArray(&exampleQueueIntArray, 15);
-    printf("Enqueue 15 and peek: %d\n", PeekQueueIntArray(&exampleQueueIntArray));
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    EnqueueIntArray(&exampleQueueIntArray, 20);
-    printf("Try to enqueue 20, it will give full queue error\n");
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    printf("Dequeue: %d\n", DequeueIntArray(&exampleQueueIntArray));
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    printf("Peek: %d\n", PeekQueueIntArray(&exampleQueueIntArray));
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    printf("Dequeue: %d\n", DequeueIntArray(&exampleQueueIntArray));
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    printf("Peek: %d\n", PeekQueueIntArray(&exampleQueueIntArray));
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    printf("Dequeue: %d\n", DequeueIntArray(&exampleQueueIntArray));
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    printf("Try to peek, it will give empty queue error and return 0: %d\n", PeekQueueIntArray(&exampleQueueIntArray));
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    printf("Try to dequeue, it will give empty queue error and return 0: %d\n", DequeueIntArray(&exampleQueueIntArray));
-    PrintHeadAndTail(&exampleQueueIntArray);
-
-    return 0;
+    RunTests(&exampleQueueIntArray);
 }
