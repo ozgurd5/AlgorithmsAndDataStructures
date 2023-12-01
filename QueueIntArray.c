@@ -1,32 +1,32 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
+
 #include "QueueIntArray.h"
 
-void InitQueueIntArray(QueueIntArray* queue, int* array, size_t size)
+void InitQueueIntArray(QueueIntArray* queue, int* array, size_t arraySize)
 {
     //Link array
     queue->array = array;
-    queue->size = size;
+    queue->arraySize = arraySize;
 
     //Assign default values
+    queue->queueSize = 0;
     queue->head = 0;
     queue->tail = -1;
 }
 
-QueueIntArray* CreateQueueIntArray(size_t size)
+QueueIntArray* CreateQueueIntArray(size_t arraySize)
 {
     //Create queue in heap memory
     QueueIntArray* queue = (QueueIntArray*) malloc(sizeof (QueueIntArray));
 
     //Create integer array in heap memory
-    int* array = (int*) malloc(size * sizeof (int));
+    int* array = (int*) malloc(arraySize * sizeof (int));
 
     //Link array to the queue
     queue->array = array;
-    queue->size = size;
+    queue->arraySize = arraySize;
 
     //Assign default values
+    queue->queueSize = 0;
     queue->head = 0;
     queue->tail = -1;
 
@@ -41,19 +41,12 @@ void FreeQueueIntArray(QueueIntArray* queue)
 
 bool IsQueueIntArrayFull(QueueIntArray* queue)
 {
-    //If tail is at the end, it's full
-    return queue->tail == queue->size - 1;
+    return queue->queueSize == queue->arraySize;
 }
 
 bool IsQueueIntArrayEmpty(QueueIntArray* queue)
 {
-    //-1 is the default value of the tail, that means we never enqueued before
-
-    //Everytime we dequeue, we increase head by 1. When there is only one item, head and tail will point the same item. After we dequeued..
-    //..the last item, head will be increased by 1 and point the next item. So if head = tail + 1, everything is dequeued
-
-    //If never enqueued or dequeued everything
-    return queue->tail == -1 || queue->head == queue->tail + 1;
+    return queue->queueSize == 0;
 }
 
 void EnqueueIntArray(QueueIntArray* queue, int valueToEnqueue)
@@ -64,7 +57,14 @@ void EnqueueIntArray(QueueIntArray* queue, int valueToEnqueue)
         return;
     }
 
-    (queue->array)[++(queue->tail)] = valueToEnqueue; //TODO: circular
+    queue->queueSize++;
+
+    //To make the queue circular, we must not just increase the tail, we also ensure that after the last index of the array, tail would be pointing..
+    //..the first index of the array, so we can have a loop.
+    queue->tail++;
+    queue->tail = queue->tail % (int)queue->arraySize;
+
+    queue->array[queue->tail] = valueToEnqueue;
 }
 
 int DequeueIntArray(QueueIntArray* queue)
@@ -75,7 +75,14 @@ int DequeueIntArray(QueueIntArray* queue)
         return 0;
     }
 
-    return queue->array[(queue->head)++]; //TODO: circular
+    queue->queueSize--;
+
+    //Same loop logic applies to the head too
+    int valueToReturn = queue->array[queue->head];
+    queue->head++;
+    queue->head = queue->head % (int)queue->arraySize;
+
+    return valueToReturn;
 }
 
 int PeekQueueIntArray(QueueIntArray* queue)
@@ -91,9 +98,9 @@ int PeekQueueIntArray(QueueIntArray* queue)
 
 void PrintQueueIntArray(QueueIntArray* queue)
 {
-    printf("Head index: %d, Tail index: %d -> Array: ", queue->head, queue->tail);
+    printf("Head index: %d, Tail index: %d, Size: %lld -> Array: ", queue->head, queue->tail, queue->queueSize);
 
-    for (int i = 0; i < queue->size; ++i)
+    for (int i = 0; i < queue->arraySize; ++i)
     {
         if (i == queue->tail) printf("[");
         if (i == queue->head) printf("(");
@@ -103,7 +110,7 @@ void PrintQueueIntArray(QueueIntArray* queue)
         if (i == queue->head) printf(")");
         if (i == queue->tail) printf("]");
 
-        if (i == queue->size -1) printf("\n\n");
+        if (i == queue->arraySize - 1) printf("\n\n");
         else printf(", ");
     }
 }
@@ -165,7 +172,7 @@ void RunTestsQueueIntArrayInStackMemory()
     QueueIntArray exampleQueueIntArray;
     InitQueueIntArray(&exampleQueueIntArray, queueArray, 3);
 
-    printf("A queue that holds integer and using array with size 3 created in stack memory\n");
+    printf("A queue that holds integer and using array with arraySize 3 created in stack memory\n");
 
     RunTests(&exampleQueueIntArray);
 }
@@ -175,7 +182,7 @@ void RunTestsQueueIntArrayInHeapMemory()
     //Creating a queue that holds integer and using array in stack memory
     QueueIntArray* exampleQueueIntArray = CreateQueueIntArray(3);
 
-    printf("A queue that holds integer and using array with size 3 created in heap memory\n");
+    printf("A queue that holds integer and using array with arraySize 3 created in heap memory\n");
 
     RunTests(exampleQueueIntArray);
 

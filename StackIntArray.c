@@ -1,29 +1,26 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include "StackIntArray.h"
 
-void InitStackIntArray(StackIntArray* stack, int* array, size_t size)
+void InitStackIntArray(StackIntArray* stack, int* array, size_t arraySize)
 {
     //Link array
     stack->array = array;
-    stack->size = size;
+    stack->arraySize = arraySize;
 
     //Assign default value
     stack->top = -1;
 }
 
-StackIntArray* CreateStackIntArray(size_t size)
+StackIntArray* CreateStackIntArray(size_t arraySize)
 {
     //Create stack in heap memory
     StackIntArray* stack = (StackIntArray*) malloc(sizeof (StackIntArray));
 
     //Create integer array in heap memory
-    int* array = (int*) malloc(size * sizeof (int));
+    int* array = (int*) malloc(arraySize * sizeof (int));
 
     //Link array to the stack
     stack->array = array;
-    stack->size = size;
+    stack->arraySize = arraySize;
 
     //Assign default value
     stack->top = -1;
@@ -46,7 +43,7 @@ bool IsStackIntArrayEmpty(StackIntArray* stack)
 bool IsStackIntArrayFull(StackIntArray* stack)
 {
     //If top in last index, stack is full
-    return stack->top == stack->size - 1;
+    return stack->top == stack->arraySize - 1;
 }
 
 void PushIntArray(StackIntArray* stack, int valueToPush)
@@ -87,13 +84,13 @@ void PrintCurrentStackIntArray(StackIntArray* stack)
 {
     printf("Top: %d -> Array: ", stack->top);
 
-    for (int i = 0; i < stack->size; ++i)
+    for (int i = 0; i < stack->arraySize; ++i)
     {
         if (i == stack->top) printf("(");
         printf("%d", stack->array[i]);
         if (i == stack->top) printf(")");
 
-        if (i == stack->size -1) printf("\n\n");
+        if (i == stack->arraySize - 1) printf("\n\n");
         else printf(", ");
     }
 }
@@ -155,7 +152,7 @@ void RunTestsStackIntArrayInStackMemory()
     StackIntArray exampleStackIntArray;
     InitStackIntArray(&exampleStackIntArray, array, 3);
 
-    printf("A stack that holds integer and using array with size of 3 created in stack memory\n");
+    printf("A stack that holds integer and using array with arraySize of 3 created in stack memory\n");
 
     RunStackTests(&exampleStackIntArray);
 }
@@ -164,7 +161,7 @@ void RunTestsStackIntArrayInHeapMemory()
 {
     //Creating a stack that holds integer using array in heap memory
     StackIntArray* exampleStackIntArray = CreateStackIntArray(3);
-    printf("A stack that holds integer and using array with size 3 created in heap memory\n");
+    printf("A stack that holds integer and using array with arraySize 3 created in heap memory\n");
 
     RunStackTests(exampleStackIntArray);
 
