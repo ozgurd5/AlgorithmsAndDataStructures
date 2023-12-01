@@ -45,8 +45,9 @@ void FreeQueueIntArray(QueueIntArray* queue);
 bool IsQueueIntArrayFull(QueueIntArray* queue);
 bool IsQueueIntArrayEmpty(QueueIntArray* queue);
 
-void EnqueueIntArray(QueueIntArray* queue, int valueToEnqueue);
-int DequeueIntArray(QueueIntArray* queue);
+void EnqueueQueueIntArray(QueueIntArray* queue, int valueToEnqueue);
+int DequeueQueueIntArray(QueueIntArray* queue);
 int PeekQueueIntArray(QueueIntArray* queue);
+void FlushQueueIntArray(QueueIntArray* queue);
 
 #endif //ALGORITHMSANDDATASTRUCTURES_QUEUEINTARRAY_H

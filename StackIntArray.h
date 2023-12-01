@@ -30,10 +30,10 @@ StackIntArray* CreateStackIntArray(size_t arraySize);
 void FreeStackIntArray(StackIntArray* stack);
 
 ///Use this for debug purposes
-void PrintCurrentStackIntArray(StackIntArray* stack);
+void PrintStackIntArray(StackIntArray* stack);
 
-void PushIntArray(StackIntArray* stack, int valueToPush);
-int PopIntArray(StackIntArray* stack);
+void PushStackIntArray(StackIntArray* stack, int valueToPush);
+int PopStackIntArray(StackIntArray* stack);
 int PeekStackIntArray(StackIntArray* stack);
 
 #endif //ALGORITHMSANDDATASTRUCTURES_STACKINTARRAY_H
