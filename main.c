@@ -9,7 +9,8 @@ int main()
     //RunTestsStackIntArrayInStackMemory();
     //RunTestsStackIntArrayInHeapMemory();
 
-    RunTestsQueueIntArrayInStackMemory();
+    //RunTestsQueueIntArrayInStackMemory();
+    RunTestsQueueIntArrayInHeapMemory();
 
     return 0;
 }

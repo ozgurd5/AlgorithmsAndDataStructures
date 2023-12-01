@@ -6,7 +6,8 @@ Dokuz Eylül University Computer Science 2nd Grade
 What this repository includes:
 - Linked List
 - Stack: Integer - Array - Stack and Heap Memory
-- Queue: Integer - Array - Stack Memory
+- Queue: Integer - Array - Stack and Heap Memory
+- Tests for all data structures above
 - - -
 
 Todo:
@@ -22,8 +23,7 @@ Todo:
 - Queue:
 - Float and Char
 - Linked List
-- Dynamically Growing Array
-- Heap Memory</br></br>
+- Dynamically Growing Array</br></br>
 
 - Node</br></br>
 

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "StackIntArray.h"
 
 void InitStackIntArray(StackIntArray* stack, int* array, size_t size)
@@ -22,9 +23,9 @@ StackIntArray* CreateStackIntArray(size_t size)
 
     //Link array to the stack
     stack->array = array;
-
-    //Assign default values
     stack->size = size;
+
+    //Assign default value
     stack->top = -1;
 
     return stack;
@@ -36,11 +37,23 @@ void FreeStackIntArray(StackIntArray* stack)
     free(stack);
 }
 
+bool IsStackIntArrayEmpty(StackIntArray* stack)
+{
+    //Everytime we pop, we decrease top by 1. If top is -1, which is also the default value, we never pushed anything or popped everything.
+    return stack->top == -1;
+}
+
+bool IsStackIntArrayFull(StackIntArray* stack)
+{
+    //If top in last index, stack is full
+    return stack->top == stack->size - 1;
+}
+
 void PushIntArray(StackIntArray* stack, int valueToPush)
 {
-    if (stack->top == stack->size - 1) //If top in last index
+    if (IsStackIntArrayFull(stack))
     {
-        printf("Error: Stack capacity full\n");
+        printf("Error: Stack is full\n");
         return;
     }
 
@@ -50,7 +63,7 @@ void PushIntArray(StackIntArray* stack, int valueToPush)
 
 int PopIntArray(StackIntArray* stack)
 {
-    if (stack->top == -1) //-1 is default value of the top
+    if (IsStackIntArrayEmpty(stack))
     {
         printf("Error: Stack is empty, returning 0\n");
         return 0;
@@ -61,7 +74,7 @@ int PopIntArray(StackIntArray* stack)
 
 int PeekStackIntArray(StackIntArray* stack)
 {
-    if (stack->top == -1) //-1 is default value of the top
+    if (IsStackIntArrayEmpty(stack))
     {
         printf("Error: Stack is empty, returning 0\n");
         return 0;
@@ -91,6 +104,12 @@ void RunStackTests(StackIntArray* stack)
 
     PrintCurrentStackIntArray(stack);
 
+    printf("Try to peek while empty (never pushed before), it will give empty queue error and return 0: %d\n", PeekStackIntArray(stack));
+    PrintCurrentStackIntArray(stack);
+
+    printf("Try to pop while empty (never pushed before), it will give empty queue error and return 0: %d\n", PopIntArray(stack));
+    PrintCurrentStackIntArray(stack);
+
     PushIntArray(stack, 5);
     printf("Push 5 and peek: %d\n", PeekStackIntArray(stack));
     PrintCurrentStackIntArray(stack);
@@ -103,54 +122,30 @@ void RunStackTests(StackIntArray* stack)
     printf("Push 15 and peek: %d\n", PeekStackIntArray(stack));
     PrintCurrentStackIntArray(stack);
 
+    printf("Try to push 20 while full, it will give full capacity error\n");
+    PushIntArray(stack, 20);
+    PrintCurrentStackIntArray(stack);
+
     printf("Pop: %d\n", PopIntArray(stack));
+    PrintCurrentStackIntArray(stack);
+
     printf("Peek: %d\n", PeekStackIntArray(stack));
     PrintCurrentStackIntArray(stack);
 
     printf("Pop: %d\n", PopIntArray(stack));
     PrintCurrentStackIntArray(stack);
 
-    printf("Pop: %d\n", PopIntArray(stack));
-    PrintCurrentStackIntArray(stack);
-
-    printf("Try to pop, it will give empty queue error and return 0: %d\n", PopIntArray(stack));
-    PrintCurrentStackIntArray(stack);
-
-    printf("Try to peek, it will give empty queue error and return 0: %d\n", PeekStackIntArray(stack));
-    PrintCurrentStackIntArray(stack);
-
-    PushIntArray(stack, 5);
-    printf("Push 5 again and peek: %d\n", PeekStackIntArray(stack));
-    PrintCurrentStackIntArray(stack);
-
-    PushIntArray(stack, 10);
-    printf("Push 10 again and peek: %d\n", PeekStackIntArray(stack));
-    PrintCurrentStackIntArray(stack);
-
-    PushIntArray(stack, 15);
-    printf("Push 15 again and peek: %d\n", PeekStackIntArray(stack));
-    PrintCurrentStackIntArray(stack);
-
-    printf("Try to push 20, it will give full capacity error\n");
-    PushIntArray(stack, 20);
+    printf("Peek: %d\n", PeekStackIntArray(stack));
     PrintCurrentStackIntArray(stack);
 
     printf("Pop: %d\n", PopIntArray(stack));
     PrintCurrentStackIntArray(stack);
 
-    PushIntArray(stack, 20);
-    printf("Try to push 20 again and peek: %d\n", PeekStackIntArray(stack));
+    printf("Try to peek while empty (popped everything), it will give empty queue error and return 0: %d\n", PeekStackIntArray(stack));
     PrintCurrentStackIntArray(stack);
-}
 
-void RunTestsStackIntArrayInHeapMemory()
-{
-    //Creating a stack that holds integer using array in heap memory
-    StackIntArray* exampleStackIntArray = CreateStackIntArray(3);
-    printf("A stack that holds integer and using array with size 3 created in heap memory\n");
-
-    RunStackTests(exampleStackIntArray);
-    FreeStackIntArray(exampleStackIntArray);
+    printf("Try to pop while empty (popped everything), it will give empty queue error and return 0: %d\n", PopIntArray(stack));
+    PrintCurrentStackIntArray(stack);
 }
 
 void RunTestsStackIntArrayInStackMemory()
@@ -163,4 +158,16 @@ void RunTestsStackIntArrayInStackMemory()
     printf("A stack that holds integer and using array with size of 3 created in stack memory\n");
 
     RunStackTests(&exampleStackIntArray);
+}
+
+void RunTestsStackIntArrayInHeapMemory()
+{
+    //Creating a stack that holds integer using array in heap memory
+    StackIntArray* exampleStackIntArray = CreateStackIntArray(3);
+    printf("A stack that holds integer and using array with size 3 created in heap memory\n");
+
+    RunStackTests(exampleStackIntArray);
+
+    printf("Allocated memories for StackIntArray in heap memory freed");
+    FreeStackIntArray(exampleStackIntArray);
 }
