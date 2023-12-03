@@ -1,16 +1,16 @@
-#include "LinkedListIntID.h"
-#include "StackIntArray.h"
-#include "QueueIntArray.h"
+#include "LinkedList_IntID.h"
+#include "Stack_Int.h"
+#include "Queue_Int.h"
 
 int main()
 {
-    //RunLinkedListIntIDTests();
+    TestLinkedList_IntID();
 
-    //RunTestsStackIntArrayInStackMemory();
-    //RunTestsStackIntArrayInHeapMemory();
+    //TestInStackMemoryStack_Int();
+    //TestInHeapMemoryStack_Int();
 
-    //RunTestsQueueIntArrayInStackMemory();
-    RunTestsQueueIntArrayInHeapMemory();
+    //TestInStackMemoryQueue_Int();
+    //TestInHeapMemoryQueue_Int();
 
     return 0;
 }

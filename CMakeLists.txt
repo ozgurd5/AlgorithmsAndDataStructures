@@ -3,10 +3,10 @@ project(AlgorithmsAndDataStructures C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(AlgorithmsAndDataStructures LinkedListIntID.c
-        LinkedListIntID.h
-        StackIntArray.c
-        StackIntArray.h
+add_executable(AlgorithmsAndDataStructures LinkedList_IntID.c
+        LinkedList_IntID.h
+        Stack_Int.c
+        Stack_Int.h
         main.c
-        QueueIntArray.c
-        QueueIntArray.h)
+        Queue_Int.c
+        Queue_Int.h)

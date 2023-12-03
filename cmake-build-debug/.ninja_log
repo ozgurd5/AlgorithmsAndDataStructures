@@ -1,9 +1,18 @@
 # ninja log v5
-2	75	7231550285301344	CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj	153a4aa43e57c1bb
-71	143	7231555563141271	AlgorithmsAndDataStructures.exe	db093c679a7fbb38
+7	83	7232962594305416	CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj	153a4aa43e57c1bb
+83	148	7232962594925028	AlgorithmsAndDataStructures.exe	e3e8de2a9faf6d21
 0	86	7229881990062672	CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList.c.obj	d478fda8d826a841
 8	102	7230724350332793	CMakeFiles/AlgorithmsAndDataStructures.dir/Queue.c.obj	db2800f0a0fa0e81
 7	76	7229882231661699	CMakeFiles/AlgorithmsAndDataStructures.dir/Stack.c.obj	7381f6de2287883b
 2	53	7230728731184577	CMakeFiles/AlgorithmsAndDataStructures.dir/StackArray.c.obj	8819a84d5aa1a298
 5	84	7231550285392551	CMakeFiles/AlgorithmsAndDataStructures.dir/StackIntArray.c.obj	92b708784f259ff0
+16	200	7232896997618965	CMakeFiles/AlgorithmsAndDataStructures.dir/Queue_Int.c.obj	a3b8fac012359ead
 2	71	7231555562456648	CMakeFiles/AlgorithmsAndDataStructures.dir/QueueIntArray.c.obj	5b6a9d358b724a11
+1	69	7232962594159579	CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList_IntID.c.obj	bd16f5a94f8ff8f0
+11	194	7232896997559286	CMakeFiles/AlgorithmsAndDataStructures.dir/Stack_Int.c.obj	c5158537ecd95218
+2	67	7232962738764781	CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList_IntID.c.obj	bd16f5a94f8ff8f0
+67	131	7232962739378983	AlgorithmsAndDataStructures.exe	e3e8de2a9faf6d21
+2	68	7232962800495979	CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList_IntID.c.obj	bd16f5a94f8ff8f0
+69	142	7232962801206303	AlgorithmsAndDataStructures.exe	e3e8de2a9faf6d21
+1	65	7232962948776382	CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList_IntID.c.obj	bd16f5a94f8ff8f0
+66	129	7232962949374148	AlgorithmsAndDataStructures.exe	e3e8de2a9faf6d21
