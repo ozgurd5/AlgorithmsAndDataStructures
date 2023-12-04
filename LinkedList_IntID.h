@@ -30,8 +30,6 @@ void RemoveLastInList_IntID(Node_IntID** headPointer);
 ///\n We could remove the head so we need the double pointer the head
 void RemoveByIDInList_IntID(Node_IntID** headPointer, int id);
 
-//TODO: find previous as a normal and helper function
-
 ///\n Finds the node by id, inserts before it\n\n
 ///We could insert before head wo se need the double pointer to change the head
 void InsertBeforeByIDIntoList_IntID(Node_IntID** headPointer, int newNodeID, int newNodeValue, int insertTargetID);

@@ -1,43 +1,57 @@
 # Algorithms And Data Structures - Graph Theory
-Assignments for Algorithms and Data Structures and Graph Theory Lessons<br>
+Assignments for Algorithms and Data Structures and Graph Theory Lessons
+
 Dokuz Eylül University Computer Science 2nd Grade
 - -  -
-What this repository includes:
+What this repository includes: Algorithms And Data Structures
+
+Data Structures:
 - Linked List
 - Stack: Integer - Array - Stack and Heap Memory
 - Queue (Circular): Integer - Array - Stack and Heap Memory
 - Tests for all data structures above
-- - -
-Naming Convention:<br><br>
-Data Structures and Files: StructureName_Structure1TypeStructureType2<br>
-- Example: LinkedList_IntID -> Linked List, has integer value and id<br>
-- Example: Stack_Int -> Stack, has integer value<br>
 
-Data Structure Functions: MethodNameStructureName_StructureType1StructureType2
-- Example: InsertBeforeByIDIntoList_IntID -> Inserts a node into the list before the node with given id. List has integer value and id<br>
-- Example: PopStack_Int -> Pops the stack that has integer<br>
+Algorithms:
+- Havel-Hakimi
+- Tests for all algorithms above
+- - -
+Naming Convention:
 
 Variables and Structs: structName, variableName
 - Example: **Node_Int** currentNode -> Node that we currently hold to do things
 - Example: **int** arraySize -> Size of the array
+
+Data Structures and Files: StructureName_StructureType1StructureType2
+- Example: LinkedList_IntID -> Linked List, has integer value and id
+- Example: Stack_Int -> Stack, has integer value
+
+Data Structure Functions: MethodNameStructureName_StructureType1StructureType2
+- Example: InsertBeforeByIDIntoList_IntID -> Inserts a node into the list before the node with given id. List has integer value and id
+- Example: PopStack_Int -> Pops the stack that has integer
+
+Algorithms and Files: AlgorithmName_TypeStructure
+- Example: HavelHakimi -> Has no type or structure option
+- Example: SelectionSort_IntArray -> Sorts integer array using selection sort algorithm
 - - -
 Todo:
 - Linked List:
 - Integer, Char, Float
-- Circular and Double Linked Lists<br><br>
+- Circular and Double Linked Lists
+
 
 - Stack:
 - Float and Char
 - Linked List
-- Dynamically Growing Array<br><br>
+- Dynamically Growing Array
+
 
 - Queue (Circular):
 - Float and Char
 - Linked List
-- Dynamically Growing Array<br><br>
+- Dynamically Growing Array
+
 
 - Graph Theory Algorithms:
-- Havel-Hakimi
 - Vertex Coloring
 - Paul-Unger
 - Dijkstra

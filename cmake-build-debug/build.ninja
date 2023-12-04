@@ -73,6 +73,12 @@ build CMakeFiles/AlgorithmsAndDataStructures.dir/Queue_Int.c.obj: C_COMPILER__Al
   OBJECT_DIR = CMakeFiles\AlgorithmsAndDataStructures.dir
   OBJECT_FILE_DIR = CMakeFiles\AlgorithmsAndDataStructures.dir
 
+build CMakeFiles/AlgorithmsAndDataStructures.dir/HavelHakimi.c.obj: C_COMPILER__AlgorithmsAndDataStructures_unscanned_Debug C$:/Projects/AlgorithmsAndDataStructures/HavelHakimi.c || cmake_object_order_depends_target_AlgorithmsAndDataStructures
+  DEP_FILE = CMakeFiles\AlgorithmsAndDataStructures.dir\HavelHakimi.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\AlgorithmsAndDataStructures.dir
+  OBJECT_FILE_DIR = CMakeFiles\AlgorithmsAndDataStructures.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target AlgorithmsAndDataStructures
@@ -81,7 +87,7 @@ build CMakeFiles/AlgorithmsAndDataStructures.dir/Queue_Int.c.obj: C_COMPILER__Al
 #############################################
 # Link the executable AlgorithmsAndDataStructures.exe
 
-build AlgorithmsAndDataStructures.exe: C_EXECUTABLE_LINKER__AlgorithmsAndDataStructures_Debug CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList_IntID.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/Stack_Int.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/Queue_Int.c.obj
+build AlgorithmsAndDataStructures.exe: C_EXECUTABLE_LINKER__AlgorithmsAndDataStructures_Debug CMakeFiles/AlgorithmsAndDataStructures.dir/LinkedList_IntID.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/Stack_Int.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/main.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/Queue_Int.c.obj CMakeFiles/AlgorithmsAndDataStructures.dir/HavelHakimi.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\AlgorithmsAndDataStructures.dir
