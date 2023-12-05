@@ -1,77 +1,13 @@
 #include "HavelHakimi.h"
 
-void SelectionSort_IntArray(int* array, size_t arraySize)
-{
-    for (size_t i = 0; i < arraySize; ++i)
-    {
-        int biggest = array[i];
-        size_t biggestIndex = i;
-
-        for (size_t j = i + 1; j < arraySize; ++j)
-        {
-            if (array[j] > biggest)
-            {
-                biggest = array[j];
-                biggestIndex = j;
-            }
-        }
-
-        int temp = array[i];
-        array[i] = array[biggestIndex];
-        array[biggestIndex] = temp;
-    }
-}
-
-void PrintSingleLineArray_Int(int* array, size_t arraySize)
-{
-    for (size_t i = 0; i < arraySize; ++i)
-    {
-        printf("%d", array[i]);
-        if (i == arraySize - 1) printf("\n");
-        else printf(" - ");
-    }
-}
-
-bool IsEveryElement0InArray_Int(int* array, size_t arraySize)
-{
-    for (size_t i = 0; i < arraySize; ++i)
-    {
-        if (array[i] != 0) return false;
-    }
-
-    return true;
-}
-
-bool HasNegativeInArray_Int(int* array, size_t arraySize)
-{
-    for (size_t i = 0; i < arraySize; ++i)
-    {
-        if (array[i] < 0) return true;
-    }
-
-    return false;
-}
-
-void CopyPasteArray(int* arrayToCopy, size_t arrayToCopySize, int* arrayToPaste, size_t arrayToPasteSize)
-{
-    size_t loopNumber;
-    if (arrayToCopySize > arrayToPasteSize) loopNumber = arrayToPasteSize;
-    else loopNumber = arrayToCopySize;
-
-    for (size_t i = 0; i < loopNumber; ++i)
-    {
-        arrayToPaste[i] = arrayToCopy[i];
-    }
-}
-
 bool RunHavelHakimi(int* array, size_t arraySize)
 {
     //We shouldn't change the original array
     int copyArray[arraySize];
-    CopyPasteArray(array, arraySize, copyArray, arraySize);
+    CopyPasteArray_Int(array, arraySize, copyArray, arraySize);
+
     printf("Given array           : ");
     PrintSingleLineArray_Int(copyArray, arraySize);
-
 
     if (IsEveryElement0InArray_Int(copyArray, arraySize))
     {
@@ -136,16 +72,4 @@ void TestHavelHakimi()
     RunHavelHakimi(arrayNegative, 8);
     RunHavelHakimi(arrayUnusedDegree, 8);
     RunHavelHakimi(arrayGotNegative, 8);
-}
-
-void TestSelectionSort_IntArray()
-{
-    int array[] = {12, -33, 1, -51, 1213, 45, 66};
-
-    printf("Array before sorting:\n");
-    PrintSingleLineArray_Int(array, 7);
-
-    printf("\nArray after sorting:\n");
-    SelectionSort_IntArray(array, 7);
-    PrintSingleLineArray_Int(array, 7);
 }

@@ -2,8 +2,7 @@
 #define ALGORITHMSANDDATASTRUCTURES_HAVELHAKIMI_H
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
+#include "Array_Int.h"
 
 void TestHavelHakimi();
 bool RunHavelHakimi(int* array, size_t arraySize);

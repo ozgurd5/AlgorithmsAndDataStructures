@@ -11,4 +11,6 @@ add_executable(AlgorithmsAndDataStructures LinkedList_IntID.c
         Queue_Int.c
         Queue_Int.h
         HavelHakimi.c
-        HavelHakimi.h)
+        HavelHakimi.h
+        Array_Int.c
+        Array_Int.h)
