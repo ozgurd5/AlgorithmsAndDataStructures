@@ -66,6 +66,33 @@ void ReverseArray_Int(int* array, size_t size)
     }
 }
 
+void RotateArray_Int(int* array, size_t size, bool isRotatingRight)
+{
+    if (isRotatingRight)
+    {
+        int last = array[size - 1];
+
+        for (size_t i = size - 1 ; i > 0; --i)
+        {
+            array[i] = array[i - 1];
+        }
+
+        array[0] = last;
+    }
+
+    else
+    {
+        int first = array[0];
+
+        for (size_t i = 0; i < size - 1; ++i)
+        {
+            array[i] = array [i + 1];
+        }
+
+        array[size - 1] = first;
+    }
+}
+
 void TestArray_Int()
 {
     //TESTS
@@ -78,6 +105,8 @@ void TestArray_Int()
     //COPY PASTE - PASTE BIGGER
     //REVERSE - ODD
     //REVERSE - EVEN
+    //ROTATE RIGHT
+    //ROTATE LEFT
 
     int arrayPositive[] = {1, 2, 3, 4, 5, 6};
     int arrayNegative[] = {-1, -2, -3, -4, -5, -6};
@@ -159,7 +188,7 @@ void TestArray_Int()
     PrintSingleLineArray_Int(arrayOdd, 5);
     ReverseArray_Int(arrayOdd, 5);
 
-    printf("Odd Array Reversed: ");
+    printf("Odd Array reversed: ");
     PrintSingleLineArray_Int(arrayOdd, 5);
     //REVERSE - ODD
 
@@ -167,10 +196,28 @@ void TestArray_Int()
     printf("\nEven Array: ");
     PrintSingleLineArray_Int(arrayEven, 4);
     ReverseArray_Int(arrayEven, 4);
-    
-    printf("Even Array Reversed: ");
+
+    printf("Even Array reversed: ");
     PrintSingleLineArray_Int(arrayEven, 4);
     //REVERSE - EVEN
+
+    //ROTATE RIGHT
+    printf("\nArray Positive rotated right: ");
+    RotateArray_Int(arrayPositive, 6, true);
+    PrintSingleLineArray_Int(arrayPositive, 6);
+    printf("Array Positive rotated right again: ");
+    RotateArray_Int(arrayPositive, 6, true);
+    PrintSingleLineArray_Int(arrayPositive, 6);
+    //ROTATE RIGHT
+
+    //ROTATE LEFT
+    printf("\nArray Negative (which is same as the positive) rotated left: ");
+    RotateArray_Int(arrayNegative, 6, false);
+    PrintSingleLineArray_Int(arrayNegative, 6);
+    printf("Array Negative (which is same as the positive) rotated left again: ");
+    RotateArray_Int(arrayNegative, 6, false);
+    PrintSingleLineArray_Int(arrayNegative, 6);
+    //ROTATE LEFT
 }
 
 //

@@ -10,6 +10,7 @@ void PrintSingleLineArray_Int(int* array, size_t size);
 bool HasNegativeInArray_Int(int* array, size_t size);
 bool IsEveryElement0InArray_Int(int* array, size_t size);
 void CopyPasteArray_Int(int* arrayToCopy, size_t arrayToCopySize, int* arrayToPaste, size_t arrayToPasteSize);
+void RotateArray_Int(int* array, size_t size, bool isRotatingRight);
 
 void SelectionSort_IntArray(int* array, size_t arraySize);
 void TestSelectionSort_IntArray();
