@@ -6,7 +6,8 @@ Dokuz Eylül University Computer Science 2nd Grade
 What this repository includes: Algorithms And Data Structures
 
 Data Structures:
-- Linked List
+- Array: Integer
+- Linked List: Integer and ID
 - Stack: Integer - Array - Stack and Heap Memory
 - Queue (Circular): Integer - Array - Stack and Heap Memory
 - Tests for all data structures above
@@ -36,6 +37,7 @@ Algorithms and Files: AlgorithmName_TypeStructure
 Todo:
 - Linked List:
 - Integer, Char, Float
+- Header Linked List
 - Circular and Double Linked Lists
 
 
