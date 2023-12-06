@@ -2,12 +2,13 @@
 #include "LinkedList_IntID.h"
 #include "Stack_Int.h"
 #include "Queue_Int.h"
+#include "BinarySearchTree.h"
 
 #include "HavelHakimi.h"
 
 int main()
 {
-    TestArray_Int();
+    //TestArray_Int();
     //TestSelectionSort_IntArray();
 
     //TestLinkedList_IntID();
@@ -17,6 +18,8 @@ int main()
 
     //TestInStackMemoryQueue_Int();
     //TestInHeapMemoryQueue_Int();
+
+    TestBinarySearchTree_Int();
 
     //TestHavelHakimi();
 

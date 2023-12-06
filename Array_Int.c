@@ -93,6 +93,14 @@ void RotateArray_Int(int* array, size_t size, bool isRotatingRight)
     }
 }
 
+void ClearArray_Int(int* array, size_t size)
+{
+    for (size_t i = 0; i < size; ++i)
+    {
+        array[i] = 0;
+    }
+}
+
 void TestArray_Int()
 {
     //TESTS
@@ -107,6 +115,7 @@ void TestArray_Int()
     //REVERSE - EVEN
     //ROTATE RIGHT
     //ROTATE LEFT
+    //CLEAR
 
     int arrayPositive[] = {1, 2, 3, 4, 5, 6};
     int arrayNegative[] = {-1, -2, -3, -4, -5, -6};
@@ -218,6 +227,12 @@ void TestArray_Int()
     RotateArray_Int(arrayNegative, 6, false);
     PrintSingleLineArray_Int(arrayNegative, 6);
     //ROTATE LEFT
+
+    //CLEAR
+    printf("\nArray Negative (which is same as the positive) after cleaning: ");
+    ClearArray_Int(arrayNegative, 6);
+    PrintSingleLineArray_Int(arrayNegative, 6);
+    //CLEAR
 }
 
 //

@@ -13,4 +13,6 @@ add_executable(AlgorithmsAndDataStructures LinkedList_IntID.c
         HavelHakimi.c
         HavelHakimi.h
         Array_Int.c
-        Array_Int.h)
+        Array_Int.h
+        BinarySearchTree.c
+        BinarySearchTree.h)
