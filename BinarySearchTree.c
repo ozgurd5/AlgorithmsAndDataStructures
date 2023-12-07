@@ -17,6 +17,31 @@ BinarySearchTree* CreateBinarySearchTree_Int(size_t size)
     return newBinaryTree;
 }
 
+void RawPrintBinarySearchTree_Int(BinarySearchTree* binarySearchTree)
+{
+    int currentNodeIndex = 0;
+    int nodeCapacityInLine = 1;
+    int nodeInCurrentLine = 0;
+
+    while(currentNodeIndex != binarySearchTree->size)
+    {
+        printf("%d(%d)", binarySearchTree->array[currentNodeIndex], currentNodeIndex);
+
+        nodeInCurrentLine++;
+        currentNodeIndex++;
+
+        if (nodeInCurrentLine == nodeCapacityInLine)
+        {
+            printf("\n");
+
+            nodeCapacityInLine *= 2;
+            nodeInCurrentLine = 0;
+        }
+
+        else printf("-");
+    }
+}
+
 int GetLeftChildIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int index)
 {
     int leftIndex = index * 2 + 1;
@@ -24,7 +49,7 @@ int GetLeftChildIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, in
     if (leftIndex < binarySearchTree->size) return leftIndex;
     else
     {
-        printf("Error: Index %d is out of array bounds and doesn't have left child, returning 0", index);
+        printf("Error: Index %d is out of array bounds and doesn't have left child, returning 0\n", index);
         return 0;
     }
 }
@@ -36,7 +61,7 @@ int GetRightChildIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, i
     if (rightIndex < binarySearchTree->size) return rightIndex;
     else
     {
-        printf("Error: Index %d is out of array bounds and doesn't have right child, returning 0", index);
+        printf("Error: Index %d is out of array bounds and doesn't have right child, returning 0\n", index);
         return 0;
     }
 }
@@ -49,7 +74,7 @@ int GetParentIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int i
 
     if (index == 0)
     {
-        printf("Error: Root doesn't have any parent, returning 0");
+        printf("Error: Root doesn't have any parent, returning 0\n");
         return 0;
     }
 
@@ -57,19 +82,36 @@ int GetParentIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int i
 
     else
     {
-        printf("Error: Index %d is outside of array bounds, returning 0", index);
+        printf("Error: Index %d is outside of array bounds, returning 0\n", index);
         return 0;
     }
 }
 
 void AddToBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int valueToAdd)
 {
+    //We have to check empty bst here because if bts is full or getting right or left child index functions goes out of bound, they return 0 too
+    if (binarySearchTree->array[0] == 0)
+    {
+        binarySearchTree->array[0] = valueToAdd;
+        return;
+    }
+
     int currentNodeIndex = 0;
     while (binarySearchTree->array[currentNodeIndex] != 0)
     {
         if (valueToAdd == binarySearchTree->array[currentNodeIndex]) return;
         else if (valueToAdd < binarySearchTree->array[currentNodeIndex]) currentNodeIndex = GetLeftChildIndexBinarySearchTree_Int(binarySearchTree, currentNodeIndex);
         else currentNodeIndex = GetRightChildIndexBinarySearchTree_Int(binarySearchTree, currentNodeIndex);
+
+        if (currentNodeIndex == 0)
+        {
+            //We have to delete the error message coming from getting right or left child index functions to avoid confusion
+            printf("\x1b[1F"); //Move to beginning of previous line
+            printf("\x1b[2K"); //Clear entire line
+
+            printf("Error: Can't add the value %d because binary search list is full\n", valueToAdd);
+            return;
+        }
     }
 
     binarySearchTree->array[currentNodeIndex] = valueToAdd;
@@ -77,12 +119,25 @@ void AddToBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int valueToAd
 
 int FindInBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int valueToFind)
 {
+    //We have to check root here because if getting right or left child index functions goes out of bound, which means value not found, they return 0 too
+    if (binarySearchTree->array[0] == valueToFind) return 0;
+
     int currentNodeIndex = 0;
     while (binarySearchTree->array[currentNodeIndex] != 0)
     {
         if (valueToFind == binarySearchTree->array[currentNodeIndex]) return currentNodeIndex;
         else if (valueToFind < binarySearchTree->array[currentNodeIndex]) currentNodeIndex = GetLeftChildIndexBinarySearchTree_Int(binarySearchTree, currentNodeIndex);
         else currentNodeIndex = GetRightChildIndexBinarySearchTree_Int(binarySearchTree, currentNodeIndex);
+
+        if (currentNodeIndex == 0)
+        {
+            //We have to delete the error message coming from getting right or left child index functions to avoid confusion
+            printf("\x1b[1F"); //Move to beginning of previous line
+            printf("\x1b[2K"); //Clear entire line
+
+            printf("Error: Value %d does not exist, returning 0\n", valueToFind);
+            return 0;
+        }
     }
 
     return currentNodeIndex;
@@ -90,10 +145,30 @@ int FindInBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int valueToFi
 
 void TestBinarySearchTree_Int()
 {
+    BinarySearchTree emptyBinarySearchTree;
+    int array2[15];
+    ClearArray_Int(array2, 15);
+    InitBinarySearchTree_Int(&emptyBinarySearchTree, array2, 15);
+
+    BinarySearchTree fullBinarySearchTree;
+    int array3[6];
+    ClearArray_Int(array3, 6);
+    InitBinarySearchTree_Int(&fullBinarySearchTree, array3, 6);
+
+    //
+    fullBinarySearchTree.array[0] = 39;
+    fullBinarySearchTree.array[1] = 27;
+    fullBinarySearchTree.array[2] = 45;
+    fullBinarySearchTree.array[3] = 18;
+    fullBinarySearchTree.array[4] = 29;
+    fullBinarySearchTree.array[5] = 40;
+    fullBinarySearchTree.array[6] = 54;
+    //
+
     BinarySearchTree binarySearchTree;
-    int array[64];
-    ClearArray_Int(array, 64);
-    InitBinarySearchTree_Int(&binarySearchTree, array, 64);
+    int array[15];
+    ClearArray_Int(array, 15);
+    InitBinarySearchTree_Int(&binarySearchTree, array, 15);
 
     //
     binarySearchTree.array[0] = 39;
@@ -106,6 +181,7 @@ void TestBinarySearchTree_Int()
     //
 
     //TESTS
+    //PRINT RAW
     //GET RIGHT CHILD INDEX
     //GET LEFT CHILD INDEX
     //GET PARENT INDEX
@@ -113,19 +189,19 @@ void TestBinarySearchTree_Int()
     //FIND
 
     //REMOVE
-    //PRINT
     //MAKE BINARY TREE A BINARY SEARCH TREE
 
-    //
-    printf("BINARY SEARCH TREE: VALUE(INDEX)\n");
-    printf("              39(0)\n");
-    printf("     27(1)            45(2)\n");
-    printf("18(3)     29(4)  40(5)     54(6)\n\n");
-    //
+    //PRINT RAW
+    printf("Try to print empty binary search tree:\n");
+    RawPrintBinarySearchTree_Int(&emptyBinarySearchTree);
+
+    printf("\nPrint Binary Search Tree:\n");
+    RawPrintBinarySearchTree_Int(&binarySearchTree);
+    //PRINT RAW
 
     //GET RIGHT CHILD INDEX
     int rootRightChildIndex = GetRightChildIndexBinarySearchTree_Int(&binarySearchTree, 0);
-    printf("Right child index of the root: %d\n", rootRightChildIndex);
+    printf("\nRight child index of the root: %d\n", rootRightChildIndex);
     printf("Right child value of the root: %d\n", binarySearchTree.array[rootRightChildIndex]);
 
     int secondIndexRightChildIndex = GetRightChildIndexBinarySearchTree_Int(&binarySearchTree, 2);
@@ -174,10 +250,44 @@ void TestBinarySearchTree_Int()
     //GET PARENT INDEX
 
     //ADD
+    printf("\nAdd 10:\n");
+    AddToBinarySearchTree_Int(&binarySearchTree, 10);
+    RawPrintBinarySearchTree_Int(&binarySearchTree);
 
-    //add normal
-    //add while empty
-    //try to add while full
-    
+    printf("\nAdd 10, which is already added:\n");
+    AddToBinarySearchTree_Int(&binarySearchTree, 10);
+    RawPrintBinarySearchTree_Int(&binarySearchTree);
+
+    printf("\nAdd 39, which is the root and already added:\n");
+    AddToBinarySearchTree_Int(&binarySearchTree, 39);
+    RawPrintBinarySearchTree_Int(&binarySearchTree);
+
+    printf("\nAdd 70:\n");
+    AddToBinarySearchTree_Int(&binarySearchTree, 70);
+    RawPrintBinarySearchTree_Int(&binarySearchTree);
+
+    printf("\nAdd 30:\n");
+    AddToBinarySearchTree_Int(&binarySearchTree, 30);
+    RawPrintBinarySearchTree_Int(&binarySearchTree);
+
+    printf("\nTry to add 200:\n");
+    AddToBinarySearchTree_Int(&binarySearchTree, 200);
+    RawPrintBinarySearchTree_Int(&binarySearchTree);
+
+    printf("\nAdd 10 to the empty binary search tree:\n");
+    AddToBinarySearchTree_Int(&emptyBinarySearchTree, 10);
+    RawPrintBinarySearchTree_Int(&emptyBinarySearchTree);
     //ADD
+
+    //FIND
+    printf("\nFind the index of the value 39: %d\n", FindInBinarySearchTree_Int(&binarySearchTree, 39));
+    RawPrintBinarySearchTree_Int(&binarySearchTree);
+
+    printf("\nFind the index of the value 10: %d\n", FindInBinarySearchTree_Int(&binarySearchTree, 10));
+    RawPrintBinarySearchTree_Int(&binarySearchTree);
+
+    printf("\n");
+    printf("Find the index of the value 200, which doesn't exist: %d\n", FindInBinarySearchTree_Int(&binarySearchTree, 200));
+    RawPrintBinarySearchTree_Int(&binarySearchTree);
+    //FIND
 }
