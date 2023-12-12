@@ -23,6 +23,6 @@ int GetLeftChildIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, in
 int GetRightChildIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int index);
 int GetParentIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int index);
 void AddToBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int valueToAdd);
-int FindInBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int valueToFind);
+int FindByValueInBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int valueToFind);
 
 #endif //ALGORITHMSANDDATASTRUCTURES_BINARYSEARCHTREE_H
