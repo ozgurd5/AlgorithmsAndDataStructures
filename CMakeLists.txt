@@ -15,4 +15,6 @@ add_executable(AlgorithmsAndDataStructures LinkedList_IntID.c
         Array_Int.c
         Array_Int.h
         BinarySearchTree.c
-        BinarySearchTree.h)
+        BinarySearchTree.h
+        Heap_Int.c
+        Heap_Int.h)

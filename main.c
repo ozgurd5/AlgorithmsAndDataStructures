@@ -3,6 +3,7 @@
 #include "Stack_Int.h"
 #include "Queue_Int.h"
 #include "BinarySearchTree.h"
+#include "Heap_Int.h"
 
 #include "HavelHakimi.h"
 
@@ -19,7 +20,9 @@ int main()
     //TestInStackMemoryQueue_Int();
     //TestInHeapMemoryQueue_Int();
 
-    TestBinarySearchTree_Int();
+    //TestBinarySearchTree_Int();
+    TestHeap_Int();
+
 
     //TestHavelHakimi();
 
