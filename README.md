@@ -10,6 +10,8 @@ Data Structures:
 - Linked List: Integer and ID
 - Stack: Integer - Array - Stack and Heap Memory
 - Queue (Circular): Integer - Array - Stack and Heap Memory
+- Binary Search Tree: Integer - Array
+- Heap: Integer - Array
 - Tests for all data structures above
 
 Algorithms:
@@ -51,6 +53,10 @@ Todo:
 - Float and Char
 - Linked List
 - Dynamically Growing Array
+
+
+- Binary Search Tree and Heap:
+- Common Tree
 
 
 - Graph Theory Algorithms:
