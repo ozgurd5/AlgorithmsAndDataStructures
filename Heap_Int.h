@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "BinaryTree.h"
 
 typedef struct Heap_Int Heap_Int;
 struct Heap_Int
@@ -17,7 +18,6 @@ void TestInHeapMemoryHeap_Int();
 void InitHeap_Int(Heap_Int* heap, int* array, size_t arraySize);
 Heap_Int* CreateHeap_Int(size_t arraySize);
 void FreeHeap_Int(Heap_Int* heapToFree);
-void RawPrintHeap_Int(Heap_Int* heap);
 void MaxHeapifyTopBottom_Int(Heap_Int* heap);
 void MaxHeapifyBottomUp_Int(Heap_Int* heap);
 void AddHeap_Int(Heap_Int* heap, int valueToAdd);

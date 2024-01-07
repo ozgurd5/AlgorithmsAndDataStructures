@@ -20,9 +20,6 @@ void TestInHeapMemoryBinarySearchTree_Int();
 
 void InitBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int* array, size_t size);
 BinarySearchTree* CreateBinarySearchTree_Int(size_t size);
-size_t GetLeftChildIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, size_t index);
-size_t GetRightChildIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, size_t index);
-size_t GetParentIndexBinarySearchTree_Int(BinarySearchTree* binarySearchTree, size_t index);
 void AddToBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int valueToAdd);
 size_t FindByValueInBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int valueToFind);
 
