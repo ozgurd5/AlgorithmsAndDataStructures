@@ -21,9 +21,10 @@ int main()
     //TestInHeapMemoryQueue_Int();
 
     //TestInStackMemoryBinarySearchTree_Int();
-    TestInHeapMemoryBinarySearchTree_Int();
+    //TestInHeapMemoryBinarySearchTree_Int();
 
-    //TestHeap_Int();
+    //TestInStackMemoryHeap_Int();
+    //TestInHeapMemoryHeap_Int();
 
     //TestHavelHakimi();
 

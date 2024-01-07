@@ -141,7 +141,6 @@ size_t FindByValueInBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int
 void RemoveByValueInBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int valueToRemove)
 {
     size_t indexToRemove = FindByValueInBinarySearchTree_Int(binarySearchTree, valueToRemove);
-    printf("afterfind");
 
     //If value doesn't exist
     if (indexToRemove == -1)
@@ -154,9 +153,7 @@ void RemoveByValueInBinarySearchTree_Int(BinarySearchTree* binarySearchTree, int
     }
 
     size_t rightChildIndex = GetRightChildIndexBinarySearchTree_Int(binarySearchTree, indexToRemove);
-    printf("afterright");
     size_t leftChildIndex = GetLeftChildIndexBinarySearchTree_Int(binarySearchTree, indexToRemove);
-    printf("afterleft");
 
     //Removing a node with no child - left and right is out of array bounds or empty
     if ((rightChildIndex == -1 && leftChildIndex == -1) || (binarySearchTree->array[rightChildIndex] == 0 && binarySearchTree->array[leftChildIndex] == 0))

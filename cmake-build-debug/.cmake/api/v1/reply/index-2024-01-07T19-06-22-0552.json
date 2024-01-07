@@ -11,31 +11,31 @@
 			"cmake" : "C:/Users/ozgur/AppData/Local/Programs/CLion/bin/cmake/win/x64/bin/cmake.exe",
 			"cpack" : "C:/Users/ozgur/AppData/Local/Programs/CLion/bin/cmake/win/x64/bin/cpack.exe",
 			"ctest" : "C:/Users/ozgur/AppData/Local/Programs/CLion/bin/cmake/win/x64/bin/ctest.exe",
-			"root" : "C:/Users/ozgur/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26"
+			"root" : "C:/Users/ozgur/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.27"
 		},
 		"version" : 
 		{
 			"isDirty" : false,
 			"major" : 3,
-			"minor" : 26,
-			"patch" : 4,
-			"string" : "3.26.4",
+			"minor" : 27,
+			"patch" : 8,
+			"string" : "3.27.8",
 			"suffix" : ""
 		}
 	},
 	"objects" : 
 	[
 		{
-			"jsonFile" : "codemodel-v2-3659c6b90b72c9b0d319.json",
+			"jsonFile" : "codemodel-v2-ef9362b4ed92460b546d.json",
 			"kind" : "codemodel",
 			"version" : 
 			{
 				"major" : 2,
-				"minor" : 5
+				"minor" : 6
 			}
 		},
 		{
-			"jsonFile" : "cache-v2-bf2d36d51b11c2b3b596.json",
+			"jsonFile" : "cache-v2-bb268737bc035aa37d65.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -44,7 +44,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cmakeFiles-v1-4fd152a4570e0013fc49.json",
+			"jsonFile" : "cmakeFiles-v1-fad2d5a17e4602f52b99.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -66,7 +66,7 @@
 	{
 		"cache-v2" : 
 		{
-			"jsonFile" : "cache-v2-bf2d36d51b11c2b3b596.json",
+			"jsonFile" : "cache-v2-bb268737bc035aa37d65.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -76,7 +76,7 @@
 		},
 		"cmakeFiles-v1" : 
 		{
-			"jsonFile" : "cmakeFiles-v1-4fd152a4570e0013fc49.json",
+			"jsonFile" : "cmakeFiles-v1-fad2d5a17e4602f52b99.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -86,12 +86,12 @@
 		},
 		"codemodel-v2" : 
 		{
-			"jsonFile" : "codemodel-v2-3659c6b90b72c9b0d319.json",
+			"jsonFile" : "codemodel-v2-ef9362b4ed92460b546d.json",
 			"kind" : "codemodel",
 			"version" : 
 			{
 				"major" : 2,
-				"minor" : 5
+				"minor" : 6
 			}
 		},
 		"toolchains-v1" : 

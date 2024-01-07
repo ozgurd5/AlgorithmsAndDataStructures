@@ -1,20 +1,40 @@
 #include "Heap_Int.h"
 
-void InitHeap_Int(Heap_Int* heap, int* array)
+void InitHeap_Int(Heap_Int* heap, int* array, size_t arraySize)
 {
     heap->array = array;
-    heap->size = -1;
+    heap->arraySize = arraySize;
+    heap->size = 0;
+    heap->isMaxHeap = true;
+}
+
+Heap_Int* CreateHeap_Int(size_t arraySize)
+{
+    Heap_Int* heap = (Heap_Int*) malloc(sizeof(Heap_Int));
+
+    heap->array = (int*) malloc(arraySize * sizeof(int));
+    heap->arraySize = arraySize;
+    heap->size = 0;
+    heap->isMaxHeap = true;
+
+    return heap;
+}
+
+void FreeHeap_Int(Heap_Int* heapToFree)
+{
+    free(heapToFree->array);
+    free(heapToFree);
 }
 
 void RawPrintHeap_Int(Heap_Int* heap)
 {
-    int currentNodeIndex = 0;
+    size_t currentNodeIndex = 0;
     int nodeCapacityInLine = 1;
     int nodeInCurrentLine = 0;
 
     while(currentNodeIndex != heap->size)
     {
-        printf("%d(%d)", heap->array[currentNodeIndex], currentNodeIndex);
+        printf("%d(%lld)", heap->array[currentNodeIndex], currentNodeIndex);
 
         nodeInCurrentLine++;
         currentNodeIndex++;
@@ -29,6 +49,8 @@ void RawPrintHeap_Int(Heap_Int* heap)
 
         else printf("-");
     }
+
+    if (nodeInCurrentLine != 0) printf("\n");
 }
 
 //TODO: code repetition with binary search tree
@@ -41,11 +63,40 @@ size_t GetParentIndexHeap_Int(size_t index)
     return parentIndex;
 }
 
-void MaxHeapify_Int(Heap_Int* heap)
+size_t GetLeftChildIndexHeap_Int(size_t index)
 {
-    if (heap->size == 0) return;
+    return index * 2 + 1;
+}
 
-    size_t currentIndex = heap->size;
+size_t GetRightChildIndexHeap_Int(size_t index)
+{
+    return index * 2 + 2;
+}
+
+void MaxHeapifyTopBottom_Int(Heap_Int* heap)
+{
+    if (heap->size == 1) return;
+
+    size_t currentIndex = 0;
+    size_t currentChildIndex = 1;
+
+    while (heap->array[currentIndex] < heap->array[currentChildIndex])
+    {
+        int tempValue = heap->array[currentIndex];
+        heap->array[currentIndex] = heap->array[currentChildIndex];
+        heap->array[currentChildIndex] = tempValue;
+
+        currentChildIndex++;
+    }
+
+    heap->isMaxHeap = true;
+}
+
+void MaxHeapifyBottomUp_Int(Heap_Int* heap)
+{
+    if (heap->size == 1) return;
+
+    size_t currentIndex = heap->size - 1;
     size_t currentParentIndex = GetParentIndexHeap_Int(heap->size);
 
     while(heap->array[currentIndex] > heap->array[currentParentIndex])
@@ -59,33 +110,80 @@ void MaxHeapify_Int(Heap_Int* heap)
 
         if (currentIndex == 0) return;
     }
+
+    heap->isMaxHeap = true;
 }
 
 void AddHeap_Int(Heap_Int* heap, int valueToAdd)
 {
-    heap->size++;
     heap->array[heap->size] = valueToAdd;
-    MaxHeapify_Int(heap);
+    heap->size++;
+    if (heap->isMaxHeap) MaxHeapifyBottomUp_Int(heap);
 }
 
-void TestHeap_Int()
+void RemoveFromHeap_Int(Heap_Int* heap)
 {
-    int array[32];
-    Heap_Int heapInt;
-    InitHeap_Int(&heapInt, array);
+    heap->array[0] = heap->array[heap->size - 1];
+    heap->size--;
 
-    AddHeap_Int(&heapInt, 10);
-    AddHeap_Int(&heapInt, 12);
-    AddHeap_Int(&heapInt, 30);
-    AddHeap_Int(&heapInt, 15);
-    AddHeap_Int(&heapInt, 14);
-    AddHeap_Int(&heapInt, 7);
-    AddHeap_Int(&heapInt, 8);
-    AddHeap_Int(&heapInt, 22);
-    AddHeap_Int(&heapInt, 65);
-    AddHeap_Int(&heapInt, 96);
-    AddHeap_Int(&heapInt, 120);
-    AddHeap_Int(&heapInt, 1443);
+    if (heap->isMaxHeap) MaxHeapifyTopBottom_Int(heap);
+}
 
-    RawPrintHeap_Int(&heapInt);
+void TestHeap_Int(Heap_Int* heap)
+{
+    printf("--Max Heap--\n");
+
+    printf("\nAdd 10:\n");
+    AddHeap_Int(heap, 10);
+    RawPrintHeap_Int(heap);
+
+    printf("\nAdd 6:\n");
+    AddHeap_Int(heap, 6);
+    RawPrintHeap_Int(heap);
+
+    printf("\nAdd 20:\n");
+    AddHeap_Int(heap, 20);
+    RawPrintHeap_Int(heap);
+
+    printf("\nAdd 30:\n");
+    AddHeap_Int(heap, 30);
+    RawPrintHeap_Int(heap);
+
+    printf("\nAdd 25:\n");
+    AddHeap_Int(heap, 25);
+    RawPrintHeap_Int(heap);
+
+    printf("\nAdd 15:\n");
+    AddHeap_Int(heap, 15);
+    RawPrintHeap_Int(heap);
+
+    printf("\nAdd 50:\n");
+    AddHeap_Int(heap, 50);
+    RawPrintHeap_Int(heap);
+
+    printf("\nAdd 13312:\n");
+    AddHeap_Int(heap, 13312);
+    RawPrintHeap_Int(heap);
+
+    printf("\nRemove Root:\n");
+    RemoveFromHeap_Int(heap);
+    RawPrintHeap_Int(heap);
+}
+
+void TestInStackMemoryHeap_Int()
+{
+    int array[15];
+    Heap_Int heap;
+    InitHeap_Int(&heap, array, 15);
+
+    TestHeap_Int(&heap);
+}
+
+void TestInHeapMemoryHeap_Int()
+{
+    Heap_Int* heap = CreateHeap_Int(15);
+    TestHeap_Int(heap);
+
+    TestHeap_Int(heap);
+    FreeHeap_Int(heap);
 }
