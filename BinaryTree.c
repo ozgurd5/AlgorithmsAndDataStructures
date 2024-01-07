@@ -40,7 +40,7 @@ void RawPrintBinaryTree_Int(int* array, size_t size)
             nodeInCurrentLine = 0;
         }
 
-        else printf("-");
+        else printf(" - ");
     }
 
     if (nodeInCurrentLine != 0) printf("\n");
