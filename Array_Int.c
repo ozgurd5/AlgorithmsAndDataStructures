@@ -93,11 +93,19 @@ void RotateArray_Int(int* array, size_t size, bool isRotatingRight)
     }
 }
 
-void ClearArray_Int(int* array, size_t size)
+void ClearArrayUsingZero_Int(int* array, size_t size)
 {
     for (size_t i = 0; i < size; ++i)
     {
         array[i] = 0;
+    }
+}
+
+void ClearArrayUsingGivenValue_Int(int* array, size_t size, int givenValue)
+{
+    for (size_t i = 0; i < size; ++i)
+    {
+        array[i] = givenValue;
     }
 }
 
@@ -230,7 +238,7 @@ void TestArray_Int()
 
     //CLEAR
     printf("\nArray Negative (which is same as the positive) after cleaning: ");
-    ClearArray_Int(arrayNegative, 6);
+    ClearArrayUsingZero_Int(arrayNegative, 6);
     PrintSingleLineArray_Int(arrayNegative, 6);
     //CLEAR
 }

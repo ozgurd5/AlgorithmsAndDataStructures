@@ -2,6 +2,7 @@
 #define ALGORITHMSANDDATASTRUCTURES_BINARYTREE_H
 
 #include <stdio.h>
+#include "BinarySearchTree.h"
 
 size_t GetParentIndexBinaryTree(size_t index);
 size_t GetLeftChildIndexBinaryTree(size_t index);

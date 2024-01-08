@@ -27,7 +27,8 @@ void RawPrintBinaryTree_Int(int* array, size_t size)
 
     while(currentNodeIndex != size)
     {
-        printf("%d(%lld)", array[currentNodeIndex], currentNodeIndex);
+        if (array[currentNodeIndex] == EMPTY_BST_NODE) printf("%c(%lld)", 'x', currentNodeIndex);
+        else printf("%d(%lld)", array[currentNodeIndex], currentNodeIndex);
 
         nodeInCurrentLine++;
         currentNodeIndex++;

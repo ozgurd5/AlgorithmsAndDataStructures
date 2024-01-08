@@ -20,7 +20,7 @@ int main()
     //TestInStackMemoryQueue_Int();
     //TestInHeapMemoryQueue_Int();
 
-    //TestInStackMemoryBinarySearchTree_Int();
+    TestInStackMemoryBinarySearchTree_Int();
     //TestInHeapMemoryBinarySearchTree_Int();
 
     //TestInStackMemoryHeap_Int();
