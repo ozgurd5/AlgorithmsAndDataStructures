@@ -242,34 +242,3 @@ void TestArray_Int()
     PrintSingleLineArray_Int(arrayNegative, 6);
     //CLEAR
 }
-
-//
-
-void SelectionSort_IntArray(int* array, size_t arraySize)
-{
-    for (size_t i = 0; i < arraySize; ++i)
-    {
-        size_t biggestIndex = i;
-
-        for (size_t j = i + 1; j < arraySize; ++j)
-        {
-            if (array[j] > array[biggestIndex]) biggestIndex = j;
-        }
-
-        int temp = array[i];
-        array[i] = array[biggestIndex];
-        array[biggestIndex] = temp;
-    }
-}
-
-void TestSelectionSort_IntArray()
-{
-    int array[] = {12, -33, 1, -51, 1213, 45, 66};
-
-    printf("Array before sorting:\n");
-    PrintSingleLineArray_Int(array, 7);
-
-    printf("\nArray after sorting:\n");
-    SelectionSort_IntArray(array, 7);
-    PrintSingleLineArray_Int(array, 7);
-}

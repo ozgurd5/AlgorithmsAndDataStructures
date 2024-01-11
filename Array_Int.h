@@ -18,7 +18,4 @@ void RotateArray_Int(int* array, size_t size, bool isRotatingRight);
 void ClearArrayUsingZero_Int(int* array, size_t size);
 void ClearArrayUsingGivenValue_Int(int* array, size_t size, int givenValue);
 
-void SelectionSort_IntArray(int* array, size_t arraySize);
-void TestSelectionSort_IntArray();
-
 #endif //ALGORITHMSANDDATASTRUCTURES_ARRAY_INT_H

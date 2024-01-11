@@ -41,19 +41,23 @@ void AddHeap_Int(Heap_Int* heap, int valueToAdd)
     else MinHeapifyBottomUp_Int(heap);
 }
 
-void RemoveFromHeap_Int(Heap_Int* heap)
+int RemoveFromHeap_Int(Heap_Int* heap)
 {
     if (heap->size == 0)
     {
-        printf("Heap is empty, can't remove from heap\n");
-        return;
+        printf("Heap is empty, can't remove from heap, returning zero\n");
+        return 0;
     }
+
+    int valueToReturn = heap->array[0];
 
     heap->array[0] = heap->array[heap->size - 1];
     heap->size--;
 
     if (heap->isMaxHeap) MaxHeapifyTopDown_Int(heap);
     else MinHeapifyTopDown_Int(heap);
+
+    return valueToReturn;
 }
 
 void MaxHeapifyTopDown_Int(Heap_Int* heap)

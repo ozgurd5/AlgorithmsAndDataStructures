@@ -19,4 +19,6 @@ add_executable(AlgorithmsAndDataStructures LinkedList_IntID.c
         Heap_Int.c
         Heap_Int.h
         BinaryTree.c
-        BinaryTree.h)
+        BinaryTree.h
+        SortingAlgorithms.c
+        SortingAlgorithms.h)
